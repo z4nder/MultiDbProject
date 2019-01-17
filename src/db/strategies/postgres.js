@@ -19,9 +19,16 @@ class Postgres extends ICrud {
             return false;
         }
     };
-    create(item) {
-        return this._herois.create(item)
+    async create(item) {
+        const {
+            dataValues
+        } = await this._herois.create(item);
+
+        return dataValues;
     };
+    async read(item = {}) {
+        return this._herois.findAll({where: item, raw: true});
+    }
 
     async connect() {
         this._driver = new Sequelize(
