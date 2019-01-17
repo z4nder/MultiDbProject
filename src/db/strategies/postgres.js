@@ -27,6 +27,11 @@ class Postgres extends ICrud {
         return dataValues;
     };
     
+    async delete(id) {
+        const query = id ? { id } : {};
+        return this._herois.destroy({where: query});
+    }
+    
     async update(id, item) {
         return this._herois.update(item, {where: {id : id}})
         //Retorna 1 se o update deu certo e 0 se não

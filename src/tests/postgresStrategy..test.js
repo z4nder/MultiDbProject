@@ -16,6 +16,7 @@ describe('Postgres Strategy', function(){
     this.timeout(Infinity)
     this.beforeAll(async function () {
        await context.connect()
+       await context.delete();
        await context.create(MOCK_HEROI_ATUALIZAR)
     })
     it('PostgresSQL Connection', async function () {
@@ -44,5 +45,10 @@ describe('Postgres Strategy', function(){
         assert.deepEqual(itemAtualzado.nome, novoItem.nome);
         assert.deepEqual(result, 1);
         //Concatenar objetos
+    })
+    it('Remover por ID', async function () {
+        const [item] = await context.read({});
+        const result = await context.delete(item.id);
+        assert.deepEqual(result, 1);
     })
 })
