@@ -1,5 +1,5 @@
 const ICrud = require('./../interfaces/interfaceCrud');
-
+//CLASSE USANDA EM TODO LUGAR que manda para os metodos da classe do banco passa do em strategy
 class ContextStrategy extends ICrud {//Classe abstrata
     constructor(strategy){
         super();
@@ -19,8 +19,11 @@ class ContextStrategy extends ICrud {//Classe abstrata
         return this._database.delete(id);
     }
     isConnected() {
-        throw new NotImplementedException();
+        return this._database.isConnected();
     };
+    connect() {
+        return this._database.connect();
+    }
 };
 
 module.exports = ContextStrategy;
