@@ -24,7 +24,10 @@ class ICrud {//Crud quando não implementado
 
     isConnected() {
         throw new NotImplementedException();
-    }
+    };
+    connect() {
+        throw new NotImplementedException();
+    };
 };
 
 module.exports = ICrud;

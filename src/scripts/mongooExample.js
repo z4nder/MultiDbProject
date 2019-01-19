@@ -25,5 +25,17 @@ mongoose.connect('mongodb://gadsden:250433@localhost/herois?authSource=admin&w=1
      }
  });
 
- const model = Mongoose.model('herois', heroiSchema);
+ const model = mongoose.model('herois', heroiSchema);
+
+ async function main() {
+     const resultCadastrar = await model.create( {
+         nome: 'Batman',
+         poder: 'Dinheiro'
+     });
+     console.log('resultCadastrar',resultCadastrar)
+
+     const listItens = await model.find();
+ };
+
+ main();
 
