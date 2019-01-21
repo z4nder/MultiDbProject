@@ -6,7 +6,7 @@ class ContextStrategy extends ICrud {//Classe abstrata
         this._database = strategy;
     };
 
-    create(item) {
+    create(item, skip, limit) {
         return this._database.create(item);
     };
     read(item) {
